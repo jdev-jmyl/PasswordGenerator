@@ -38,7 +38,7 @@ public class PasswordGenerator {
     public String makePassword(int numChars, boolean lowerSelected, boolean upperSelected,
             boolean numbersSelected, boolean symbolsSelected) throws Exception {
         String password = "";
-        if (numChars >= 1) {
+        if (numChars >= 1 && (lowerSelected || upperSelected || numbersSelected || symbolsSelected)) {
             passwordPattern.setLength(0);
             passwordPattern.append("(");
             if (lowerSelected) {
@@ -68,7 +68,7 @@ public class PasswordGenerator {
 //            System.out.println("try generate new password " + password);
             }
         } else {
-            throw new Exception("The numChars has to be more than 1. numChars >=1");
+            throw new Exception("The numChars has to be more than 1. numChars >= 1 and \n the password has to contain at least one character set.  ");
         }
         return password;
     }
